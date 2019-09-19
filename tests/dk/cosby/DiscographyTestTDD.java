@@ -66,5 +66,27 @@ class DiscographyTestTDD {
 
     }
 
+    /*
+     *   4. An album (record) titled “Close to the Edge” released on 13 September 1972 containing both of the
+     *   above-mentioned tracks has a playtime of 14 minutes 20 seconds and a track count of 2. It has a
+     *   release date of 13 September 1972 and is of type album.
+     *   It is displayed as “Close to the Edge [1972-09-13, PT14M20S]\n[1] And You and I [PT10M8S]\n[2]
+     *   America [PT4M12S]”
+     */
+
+    @Test
+    public void recordTest2(){
+
+
+        Record record = new Record(RecordType.ALBUM, "Close to the Edge", 1972, 9, 13);
+        record.addTrack(new Track("And You and I", 60*10+8, false));
+        record.addTrack(new Track("America", 60*4+12, true));
+
+        assertEquals("Close to the Edge [1972-09-13, PT14M20S]" +
+                "\n[1] And You and I [PT10M8S]" +
+                "\n[2] America [PT4M12S]", record.toString());
+
+    }
+
 
 }
