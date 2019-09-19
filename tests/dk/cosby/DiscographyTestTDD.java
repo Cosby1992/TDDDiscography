@@ -12,7 +12,6 @@ class DiscographyTestTDD {
     /*
      *  Testing if test class is running correctly
      */
-
     @Test
     public void testOK(){
         String s = "TDD";
@@ -24,13 +23,19 @@ class DiscographyTestTDD {
      *   “And You and I” and is not a bonus track.
      *   It is displayed as “And You and I [PT10M8S]”.
      */
-
     @Test
     public void trackTest1(){
 
         Track track = new Track("And You and I", 60*10+8, false);
 
+        int playtime = 60*10+8;
+
+
+        assertEquals(608, track.getPlaytime());
+        assertEquals("And You and I", track.getTitle());
+        assertFalse(track.isBonusTrack());
         assertEquals("And You and I [PT10M8S]", track.toString());
+
 
     }
 
@@ -39,7 +44,6 @@ class DiscographyTestTDD {
      *   of “America” and is a bonus track.
      *   It is displayed as “America [PT4M12S]”.
      */
-
     @Test
     public void trackTest2(){
 
@@ -55,7 +59,6 @@ class DiscographyTestTDD {
      *   release date of 6 October 2074 and is of type single.
      *   It is displayed as “Under Production [2074-10-06, PT0S]”.
      */
-
     @Test
     public void recordTest1(){
 
@@ -73,7 +76,6 @@ class DiscographyTestTDD {
      *   It is displayed as “Close to the Edge [1972-09-13, PT14M20S]\n[1] And You and I [PT10M8S]\n[2]
      *   America [PT4M12S]”
      */
-
     @Test
     public void recordTest2(){
 
@@ -85,6 +87,8 @@ class DiscographyTestTDD {
                 "\n[1] And You and I [PT10M8S]" +
                 "\n[2] America [PT4M12S]", record.toString());
 
+        assertEquals(2, record.getTrackCount());
+
     }
 
     /*
@@ -93,13 +97,27 @@ class DiscographyTestTDD {
      *   It is displayed as “Future Artist\n0 records”.
      *
      */
-
     @Test
     public void discographyTest1(){
 
         Discography discography = new Discography("Future Artist");
 
         assertEquals("Future Artist\n0 records", discography.toString());
+
+    }
+
+
+    /*
+     *   A discography by “Yes” including the above-mentioned album “Close to the Edge” has a record
+     *   count of 1 and the artist name “Yes”.
+     *   It is displayed as “Yes\n1 records\nClose to the Edge [1972-09-13, PT14M20S]\n[1] And You and I
+     *   [PT10M8S]\n[2] America [PT4M12S]”.
+     */
+    @Test
+    public void discographyTest2(){
+
+        Discography discography = new Discography("Yes");
+
 
     }
 

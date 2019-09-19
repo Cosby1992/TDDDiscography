@@ -42,6 +42,14 @@ public class Record {
         this.releaseDate = releaseDate;
     }
 
+    public int getTrackCount() {
+        return trackCount;
+    }
+
+    public void setTrackCount(int trackCount) {
+        this.trackCount = trackCount;
+    }
+
     public List<Track> getTracks() {
         return tracks;
     }
