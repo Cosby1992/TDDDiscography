@@ -79,7 +79,7 @@ public class Record {
         } else {
             return albumString();
         }
-        
+
     }
 
     private String albumString(){

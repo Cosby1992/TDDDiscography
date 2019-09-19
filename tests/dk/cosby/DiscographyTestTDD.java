@@ -77,7 +77,6 @@ class DiscographyTestTDD {
     @Test
     public void recordTest2(){
 
-
         Record record = new Record(RecordType.ALBUM, "Close to the Edge", 1972, 9, 13);
         record.addTrack(new Track("And You and I", 60*10+8, false));
         record.addTrack(new Track("America", 60*4+12, true));
@@ -85,6 +84,22 @@ class DiscographyTestTDD {
         assertEquals("Close to the Edge [1972-09-13, PT14M20S]" +
                 "\n[1] And You and I [PT10M8S]" +
                 "\n[2] America [PT4M12S]", record.toString());
+
+    }
+
+    /*
+     *   5. A discography by “Future Artist” including no albums has a record count of 0 and the artist name
+     *   “Future Artist”.
+     *   It is displayed as “Future Artist\n0 records”.
+     *
+     */
+
+    @Test
+    public void discographyTest1(){
+
+        Discography discography = new Discography("Future Artist");
+
+        assertEquals("Future Artist\n0 records", discography.toString());
 
     }
 
