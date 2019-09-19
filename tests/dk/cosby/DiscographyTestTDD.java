@@ -2,9 +2,6 @@ package dk.cosby;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
-import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiscographyTestTDD {
@@ -28,12 +25,14 @@ class DiscographyTestTDD {
 
         Track track = new Track("And You and I", 60*10+8, false);
 
-        int playtime = 60*10+8;
 
-
+        //playtime is measured in seconds. 10 minutes and 8 seconds = 608 seconds
         assertEquals(608, track.getPlaytime());
+
         assertEquals("And You and I", track.getTitle());
-        assertFalse(track.isBonusTrack());
+
+        assertFalse(track.isBonusTrack()); //assert false
+
         assertEquals("And You and I [PT10M8S]", track.toString());
 
 
@@ -48,6 +47,13 @@ class DiscographyTestTDD {
     public void trackTest2(){
 
         Track track = new Track("America", 60*4+12, true);
+
+        //playtime is measured in seconds. 4 minutes and 12 seconds = 252 seconds
+        assertEquals(252, track.getPlaytime());
+
+        assertEquals("America", track.getTitle());
+
+        assertTrue(track.isBonusTrack()); //assert true
 
         assertEquals("America [PT4M12S]", track.toString());
 
@@ -64,6 +70,11 @@ class DiscographyTestTDD {
 
 
         Record record = new Record(RecordType.SINGLE, "Under Production", 2074, 10, 6);
+
+        assertEquals(0, record.getPlaytime());
+        assertEquals(0, record.getTrackCount());
+        assertEquals(RecordType.SINGLE, record.getType());
+        assertEquals("Under Production", record.getTitle());
 
         assertEquals("Under Production [2074-10-06, PT0S]", record.toString());
 
@@ -83,11 +94,14 @@ class DiscographyTestTDD {
         record.addTrack(new Track("And You and I", 60*10+8, false));
         record.addTrack(new Track("America", 60*4+12, true));
 
+        assertEquals(860, record.getPlaytime());
+        assertEquals(2, record.getTrackCount());
+        assertEquals(RecordType.ALBUM, record.getType());
         assertEquals("Close to the Edge [1972-09-13, PT14M20S]" +
                 "\n[1] And You and I [PT10M8S]" +
                 "\n[2] America [PT4M12S]", record.toString());
 
-        assertEquals(2, record.getTrackCount());
+
 
     }
 
@@ -102,6 +116,8 @@ class DiscographyTestTDD {
 
         Discography discography = new Discography("Future Artist");
 
+        assertEquals(0, discography.getRecordCount());
+        assertEquals("Future Artist", discography.getArtistName());
         assertEquals("Future Artist\n0 records", discography.toString());
 
     }

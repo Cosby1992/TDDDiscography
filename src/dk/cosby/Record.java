@@ -42,6 +42,14 @@ public class Record {
         this.releaseDate = releaseDate;
     }
 
+    public int getPlaytime() {
+        return playtime;
+    }
+
+    public void setPlaytime(int playtime) {
+        this.playtime = playtime;
+    }
+
     public int getTrackCount() {
         return trackCount;
     }

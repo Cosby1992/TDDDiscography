@@ -19,11 +19,11 @@ release date of 13 September 1972 and is of type album.
 It is displayed as “Close to the Edge [1972-09-13, PT14M20S]\n[1] And You and I [PT10M8S]\n[2]
 America [PT4M12S]”.
 
-5. A discography by “Future Artist” including no albums has a record count of 0 and the artist name
+5. A discography by “Future Artist” including no albums has a record count of 0 and the artist artistName
 “Future Artist”.
 It is displayed as “Future Artist\n0 records”.
 
 6. A discography by “Yes” including the above-mentioned album “Close to the Edge” has a record
-count of 1 and the artist name “Yes”.
+count of 1 and the artist artistName “Yes”.
 It is displayed as “Yes\n1 records\nClose to the Edge [1972-09-13, PT14M20S]\n[1] And You and I
 [PT10M8S]\n[2] America [PT4M12S]”.

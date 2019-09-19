@@ -2,19 +2,19 @@ package dk.cosby;
 
 public class Discography {
 
-    private String name;
+    private String artistName;
     private int recordCount = 0;
 
-    public Discography(String name) {
-        this.name = name;
+    public Discography(String artistName) {
+        this.artistName = artistName;
     }
 
-    public String getName() {
-        return name;
+    public String getArtistName() {
+        return artistName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
     }
 
     public int getRecordCount() {
