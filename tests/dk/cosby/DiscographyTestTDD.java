@@ -10,7 +10,7 @@ class DiscographyTestTDD {
      *  Testing if test class is running correctly
      */
     @Test
-    public void testOK(){
+    void testOK(){
         String s = "TDD";
         assertEquals("TDD", s);
     }
@@ -21,7 +21,7 @@ class DiscographyTestTDD {
      *   It is displayed as “And You and I [PT10M8S]”.
      */
     @Test
-    public void trackTest1(){
+    void trackTest1(){
 
         Track track = new Track("And You and I", 60*10+8, false);
 
@@ -44,7 +44,7 @@ class DiscographyTestTDD {
      *   It is displayed as “America [PT4M12S]”.
      */
     @Test
-    public void trackTest2(){
+    void trackTest2(){
 
         Track track = new Track("America", 60*4+12, true);
 
@@ -66,7 +66,7 @@ class DiscographyTestTDD {
      *   It is displayed as “Under Production [2074-10-06, PT0S]”.
      */
     @Test
-    public void recordTest1(){
+    void recordTest1(){
 
 
         Record record = new Record(RecordType.SINGLE, "Under Production", 2074, 10, 6);
@@ -88,7 +88,7 @@ class DiscographyTestTDD {
      *   America [PT4M12S]”
      */
     @Test
-    public void recordTest2(){
+    void recordTest2(){
 
         Record record = new Record(RecordType.ALBUM, "Close to the Edge", 1972, 9, 13);
         record.addTrack(new Track("And You and I", 60*10+8, false));
@@ -112,7 +112,7 @@ class DiscographyTestTDD {
      *
      */
     @Test
-    public void discographyTest1(){
+    void discographyTest1(){
 
         Discography discography = new Discography("Future Artist");
 
@@ -130,9 +130,20 @@ class DiscographyTestTDD {
      *   [PT10M8S]\n[2] America [PT4M12S]”.
      */
     @Test
-    public void discographyTest2(){
+    void discographyTest2(){
 
         Discography discography = new Discography("Yes");
+
+        Record record = new Record(RecordType.ALBUM, "Close to the Edge", 1972, 9, 13);
+        record.addTrack(new Track("And You and I", 60*10+8, false));
+        record.addTrack(new Track("America", 60*4+12, true));
+
+        discography.addRecord(record);
+
+        assertEquals(1, discography.getRecordCount());
+        assertEquals("Yes", discography.getArtistName());
+        assertEquals("Yes\n1 records\nClose to the Edge [1972-09-13, PT14M20S]\n[1] And You and I " +
+                "[PT10M8S]\n[2] America [PT4M12S]" , discography.toString());
 
 
     }
